@@ -93,4 +93,14 @@ class SunriseControllerTest {
                 .contentType(MediaType.APPLICATION_JSON).content(createdSunrise)).andExpect(status().isCreated());
     }
 
+    @Test
+    @WithMockUser(username = "admin", roles = {"ADMIN"})
+    void createSunrise_UserWithADMINRoleCreatesASunriseWithNonExistingCityId_ShouldReturn409AndNonExistingCityErrorMessage() throws Exception {
+        String createdSunrise = "{\"date\": \"2024-02-24\",\"sunrise\": \"4 PM\",\"cityId\": 1}";
+        when(cityRepository.findById(1L)).thenReturn(Optional.empty());
+        this.mockMvc.perform(post("/api/sunrise")
+                .contentType(MediaType.APPLICATION_JSON).content(createdSunrise)).andExpect(status().isConflict())
+                .andExpect(content().string("City with id: 1 doesn't exists!"));
+    }
+
 }
