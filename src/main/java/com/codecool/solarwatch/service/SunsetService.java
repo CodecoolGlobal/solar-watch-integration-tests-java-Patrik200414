@@ -77,11 +77,8 @@ public class SunsetService {
                 city
         );
 
-        SunsetEntity sunsetResult = sunsetRepository.save(sunset);
+        sunsetRepository.save(sunset);
 
-        if(sunsetResult == null){
-            throw new UnableToSaveSunsetException();
-        }
 
     }
 
