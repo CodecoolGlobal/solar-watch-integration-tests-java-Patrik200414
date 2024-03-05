@@ -1,6 +1,8 @@
 package com.codecool.solarwatch.controller;
 
 import com.codecool.solarwatch.model.entities.city.City;
+import com.codecool.solarwatch.model.entities.sunrise.SunriseEntity;
+import com.codecool.solarwatch.model.sunrise.SunriseCreationDTO;
 import com.codecool.solarwatch.repository.CityRepository;
 import com.codecool.solarwatch.repository.SunriseRepository;
 import org.junit.jupiter.api.Test;
@@ -9,6 +11,7 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.http.MediaType;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
 
@@ -18,6 +21,7 @@ import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.when;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -57,6 +61,18 @@ class SunriseControllerTest {
         this.mockMvc.perform(get(String.format("/api/sunrise?city=%s&date=%s", expectedCityName, expectedDate)))
                 .andExpect(status().isOk())
                 .andExpect(content().string(expected));
+
+    }
+
+    @Test
+    @WithMockUser(username = "user1", roles = {"USER"})
+    void createSunrise_UserWithUSERRole_ShouldReturn401UnAuthorizeError() throws Exception {
+        String createdSunrise = "{\"date\": \"2024-02-24\",\"sunrise\": \"4 PM\",\"cityId\": 1}";
+
+
+        this.mockMvc.perform(post("/api/sunrise")
+                .contentType(MediaType.APPLICATION_JSON).content(createdSunrise)).andExpect(status().isForbidden());
+
 
     }
 
