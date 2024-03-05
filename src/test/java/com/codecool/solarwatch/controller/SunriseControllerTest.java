@@ -69,12 +69,28 @@ class SunriseControllerTest {
     void createSunrise_UserWithUSERRole_ShouldReturn401UnAuthorizeError() throws Exception {
         String createdSunrise = "{\"date\": \"2024-02-24\",\"sunrise\": \"4 PM\",\"cityId\": 1}";
 
-
         this.mockMvc.perform(post("/api/sunrise")
                 .contentType(MediaType.APPLICATION_JSON).content(createdSunrise)).andExpect(status().isForbidden());
-
-
     }
 
+
+    @Test
+    @WithMockUser(username = "admin", roles = {"ADMIN"})
+    void createSunrise_UserWithADMINRole_ShouldReturn201Created() throws Exception {
+        String createdSunrise = "{\"date\": \"2024-02-24\",\"sunrise\": \"4 PM\",\"cityId\": 1}";
+        City expectedCity = new City(
+                "Los Angeles",
+                "California",
+                "USA",
+                -118.243683,
+                34.052235,
+                new ArrayList<>(),
+                new ArrayList<>()
+        );
+        when(cityRepository.findById(1L)).thenReturn(Optional.of(expectedCity));
+
+        this.mockMvc.perform(post("/api/sunrise")
+                .contentType(MediaType.APPLICATION_JSON).content(createdSunrise)).andExpect(status().isCreated());
+    }
 
 }
