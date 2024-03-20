@@ -20,15 +20,14 @@ import java.util.Optional;
 
 import static org.mockito.Mockito.when;
 
-import static org.junit.jupiter.api.Assertions.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @SpringBootTest
 @AutoConfigureMockMvc
-@ActiveProfiles("test")
-class SunsetControllerTest {
+@ActiveProfiles("dev")
+class SunsetControllerIT {
 
     @Autowired
     private MockMvc mockMvc;

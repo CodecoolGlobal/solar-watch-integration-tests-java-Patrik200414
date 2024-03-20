@@ -1,8 +1,6 @@
 package com.codecool.solarwatch.controller;
 
 import com.codecool.solarwatch.model.entities.city.City;
-import com.codecool.solarwatch.model.entities.sunrise.SunriseEntity;
-import com.codecool.solarwatch.model.sunrise.SunriseCreationDTO;
 import com.codecool.solarwatch.repository.CityRepository;
 import com.codecool.solarwatch.repository.SunriseRepository;
 import org.junit.jupiter.api.Test;
@@ -20,7 +18,6 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Optional;
 
-import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
@@ -28,8 +25,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @SpringBootTest
 @AutoConfigureMockMvc
-@ActiveProfiles("test")
-class SunriseControllerTest {
+@ActiveProfiles("dev")
+class SunriseControllerIT {
     @Autowired
     private MockMvc mockMvc;
 
