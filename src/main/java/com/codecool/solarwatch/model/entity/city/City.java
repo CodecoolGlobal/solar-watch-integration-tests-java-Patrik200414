@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Objects;
 
 @Entity
-@Table(name = "cities")
+@Table(name = "city")
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class City {
     @Id
