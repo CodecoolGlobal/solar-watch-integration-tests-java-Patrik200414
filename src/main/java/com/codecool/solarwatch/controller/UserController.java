@@ -1,20 +1,13 @@
 package com.codecool.solarwatch.controller;
 
 
-import com.codecool.solarwatch.model.jwtresponse.JwtResponse;
 import com.codecool.solarwatch.model.dto.user.UserAuthenticationDTO;
-import com.codecool.solarwatch.security.jwt.JwtUtils;
+import com.codecool.solarwatch.model.jwtresponse.JwtResponse;
 import com.codecool.solarwatch.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -24,14 +17,9 @@ import java.util.List;
 public class UserController {
     private final UserService userService;
 
-    private final AuthenticationManager authenticationManager;
-    private final JwtUtils jwtUtils;
-
     @Autowired
-    public UserController(UserService userService, AuthenticationManager authenticationManager, JwtUtils jwtUtils) {
+    public UserController(UserService userService) {
         this.userService = userService;
-        this.authenticationManager = authenticationManager;
-        this.jwtUtils = jwtUtils;
     }
 
     @PostMapping("/registration")
@@ -49,27 +37,14 @@ public class UserController {
     @PostMapping("/signin")
     public ResponseEntity<?> signIn(@RequestBody UserAuthenticationDTO userAuthenticationDTO){
             try{
-                Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(
-                        userAuthenticationDTO.userName(),
-                        userAuthenticationDTO.password()
-                ));
-
-                SecurityContextHolder.getContext().setAuthentication(authentication);
-                String jwt = jwtUtils.generateJwtToken(authentication);
-
-                User userDetails = (User) authentication.getPrincipal();
-                List<String> roles = userDetails
-                        .getAuthorities()
-                        .stream()
-                        .map(GrantedAuthority::getAuthority)
-                        .toList();
-
-                return ResponseEntity.ok(new JwtResponse(jwt, userDetails.getUsername(), roles));
+                JwtResponse jwtResponse = userService.login(userAuthenticationDTO);
+                return ResponseEntity.ok(jwtResponse);
             } catch (Exception e){
                 return ResponseEntity.status(HttpStatus.FORBIDDEN).body(e);
             }
     }
 
+    /*
     @PutMapping("/role")
     public ResponseEntity<?> addAdminRole(){
         try{
@@ -77,5 +52,5 @@ public class UserController {
         } catch (Exception e){
 
         }
-    }
+    }*/
 }
