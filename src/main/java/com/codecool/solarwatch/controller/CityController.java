@@ -1,6 +1,6 @@
 package com.codecool.solarwatch.controller;
 
-import com.codecool.solarwatch.model.openweather.GeoCode;
+import com.codecool.solarwatch.model.dto.openweather.GeoCode;
 import com.codecool.solarwatch.service.CityService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

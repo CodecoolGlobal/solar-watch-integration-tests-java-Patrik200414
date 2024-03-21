@@ -1,7 +1,7 @@
-package com.codecool.solarwatch.model.sunrise;
+package com.codecool.solarwatch.model.dto.sunrise;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public record SunriseResult (String sunrise){
+public record Sunrise (SunriseResult results){
 }

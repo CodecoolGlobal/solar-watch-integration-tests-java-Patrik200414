@@ -1,4 +1,4 @@
-package com.codecool.solarwatch.model.sunrise;
+package com.codecool.solarwatch.model.dto.sunrise;
 
 import java.time.LocalDate;
 

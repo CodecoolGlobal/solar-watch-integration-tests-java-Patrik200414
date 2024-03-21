@@ -1,6 +1,6 @@
 package com.codecool.solarwatch.security.service;
 
-import com.codecool.solarwatch.model.user.Role;
+import com.codecool.solarwatch.model.dto.user.Role;
 import com.codecool.solarwatch.model.entity.user.UserEntity;
 import com.codecool.solarwatch.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;

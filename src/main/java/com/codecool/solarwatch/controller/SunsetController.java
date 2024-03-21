@@ -2,9 +2,9 @@ package com.codecool.solarwatch.controller;
 
 import com.codecool.solarwatch.customexception.InvalidCityParameterException;
 import com.codecool.solarwatch.model.entity.city.City;
-import com.codecool.solarwatch.model.sunset.SunsetCreationDTO;
-import com.codecool.solarwatch.model.sunset.SunsetReport;
-import com.codecool.solarwatch.model.sunset.SunsetUpdateDTO;
+import com.codecool.solarwatch.model.dto.sunset.SunsetCreationDTO;
+import com.codecool.solarwatch.model.dto.sunset.SunsetReport;
+import com.codecool.solarwatch.model.dto.sunset.SunsetUpdateDTO;
 import com.codecool.solarwatch.service.CityService;
 import com.codecool.solarwatch.service.SunsetService;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -2,6 +2,7 @@ package com.codecool.solarwatch.service;
 
 import com.codecool.solarwatch.customexception.NonExistingCityException;
 import com.codecool.solarwatch.customexception.NonExistingSunriseException;
+import com.codecool.solarwatch.model.dto.sunrise.*;
 import com.codecool.solarwatch.model.entity.city.City;
 import com.codecool.solarwatch.model.entity.sunrise.SunriseEntity;
 import com.codecool.solarwatch.model.sunrise.*;
