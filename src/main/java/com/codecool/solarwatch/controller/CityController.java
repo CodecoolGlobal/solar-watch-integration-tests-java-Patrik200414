@@ -6,7 +6,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/city")
 public class CityController {
     private final CityService cityService;
 
@@ -14,7 +14,8 @@ public class CityController {
         this.cityService = cityService;
     }
 
-    @PostMapping("/city")
+
+    @PostMapping()
     public ResponseEntity<?> createCity(@RequestBody GeoCode city){
         try{
             cityService.saveCity(city);
@@ -24,7 +25,7 @@ public class CityController {
         }
     }
 
-    @PutMapping("/city/{id}")
+    @PutMapping("/{id}")
     public ResponseEntity<?> updateCity(@PathVariable long id, @RequestBody GeoCode updatedCity){
         try{
             cityService.updateCity(id, updatedCity);
@@ -34,7 +35,7 @@ public class CityController {
         }
     }
 
-    @DeleteMapping("/city/{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<?> deleteCity(@PathVariable long id){
         try{
             cityService.deleteCity(id);
