@@ -1,7 +1,7 @@
 package com.codecool.solarwatch.repository;
 
-import com.codecool.solarwatch.model.entities.city.City;
-import com.codecool.solarwatch.model.entities.sunset.SunsetEntity;
+import com.codecool.solarwatch.model.entity.city.City;
+import com.codecool.solarwatch.model.entity.sunset.SunsetEntity;
 import org.springframework.data.repository.CrudRepository;
 
 import java.time.LocalDate;

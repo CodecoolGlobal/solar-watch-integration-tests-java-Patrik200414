@@ -1,11 +1,9 @@
-package com.codecool.solarwatch.model.entities.sunrise;
+package com.codecool.solarwatch.model.entity.sunrise;
 
-import com.codecool.solarwatch.model.entities.city.City;
+import com.codecool.solarwatch.model.entity.city.City;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
 
 @Entity
 @Table(name = "sunrises")

@@ -1,7 +1,7 @@
-package com.codecool.solarwatch.model.entities.city;
+package com.codecool.solarwatch.model.entity.city;
 
-import com.codecool.solarwatch.model.entities.sunrise.SunriseEntity;
-import com.codecool.solarwatch.model.entities.sunset.SunsetEntity;
+import com.codecool.solarwatch.model.entity.sunrise.SunriseEntity;
+import com.codecool.solarwatch.model.entity.sunset.SunsetEntity;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 

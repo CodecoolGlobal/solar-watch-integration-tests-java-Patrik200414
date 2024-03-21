@@ -1,6 +1,6 @@
 package com.codecool.solarwatch.controller;
 
-import com.codecool.solarwatch.model.entities.Role;
+import com.codecool.solarwatch.model.entity.Role;
 import com.codecool.solarwatch.model.jwt.JwtResponse;
 import com.codecool.solarwatch.model.user.UserEntity;
 import com.codecool.solarwatch.model.user.dto.UserAuthenticationDTO;
@@ -16,7 +16,6 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.User;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;

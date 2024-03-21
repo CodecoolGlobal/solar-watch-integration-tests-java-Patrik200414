@@ -1,12 +1,9 @@
-package com.codecool.solarwatch.model.entities.sunset;
+package com.codecool.solarwatch.model.entity.sunset;
 
-import com.codecool.solarwatch.model.entities.city.City;
+import com.codecool.solarwatch.model.entity.city.City;
 import jakarta.persistence.*;
-import org.hibernate.annotations.Generated;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
 
 @Entity
 @Table(name = "sunsets")
