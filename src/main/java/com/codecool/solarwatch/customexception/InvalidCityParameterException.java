@@ -1,4 +1,4 @@
-package com.codecool.solarwatch.custom_exception;
+package com.codecool.solarwatch.customexception;
 
 public class InvalidCityParameterException extends RuntimeException{
     public InvalidCityParameterException(String city) {

@@ -1,6 +1,6 @@
 package com.codecool.solarwatch.controller;
 
-import com.codecool.solarwatch.custom_exception.InvalidCityParameterException;
+import com.codecool.solarwatch.customexception.InvalidCityParameterException;
 import com.codecool.solarwatch.model.entities.city.City;
 import com.codecool.solarwatch.model.sunset.SunsetCreationDTO;
 import com.codecool.solarwatch.model.sunset.SunsetReport;

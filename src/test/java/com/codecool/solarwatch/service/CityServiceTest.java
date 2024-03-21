@@ -1,8 +1,8 @@
 package com.codecool.solarwatch.service;
 
-import com.codecool.solarwatch.custom_exception.AlreadyExistingCityException;
-import com.codecool.solarwatch.custom_exception.InvalidCityParameterException;
-import com.codecool.solarwatch.custom_exception.NonExistingCityException;
+import com.codecool.solarwatch.customexception.AlreadyExistingCityException;
+import com.codecool.solarwatch.customexception.InvalidCityParameterException;
+import com.codecool.solarwatch.customexception.NonExistingCityException;
 import com.codecool.solarwatch.model.entities.city.City;
 import com.codecool.solarwatch.model.open_weather.GeoCode;
 import com.codecool.solarwatch.repository.CityRepository;
