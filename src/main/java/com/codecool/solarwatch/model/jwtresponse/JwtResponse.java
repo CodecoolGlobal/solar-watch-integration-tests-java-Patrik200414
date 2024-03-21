@@ -1,4 +1,4 @@
-package com.codecool.solarwatch.model.jwt;
+package com.codecool.solarwatch.model.jwtresponse;
 
 import java.util.List;
 
