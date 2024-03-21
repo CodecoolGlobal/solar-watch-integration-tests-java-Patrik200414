@@ -1,6 +1,6 @@
 package com.codecool.solarwatch.repository;
 
-import com.codecool.solarwatch.model.user.UserEntity;
+import com.codecool.solarwatch.model.entity.user.UserEntity;
 import org.springframework.data.repository.CrudRepository;
 
 import java.util.Optional;

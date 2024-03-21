@@ -2,7 +2,7 @@ package com.codecool.solarwatch.controller;
 
 import com.codecool.solarwatch.model.user.Role;
 import com.codecool.solarwatch.model.jwtresponse.JwtResponse;
-import com.codecool.solarwatch.model.user.UserEntity;
+import com.codecool.solarwatch.model.entity.user.UserEntity;
 import com.codecool.solarwatch.model.user.dto.UserAuthenticationDTO;
 import com.codecool.solarwatch.repository.UserRepository;
 import com.codecool.solarwatch.security.jwt.JwtUtils;

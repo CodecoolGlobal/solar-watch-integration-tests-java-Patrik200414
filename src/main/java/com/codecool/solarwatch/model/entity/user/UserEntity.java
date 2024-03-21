@@ -1,5 +1,6 @@
-package com.codecool.solarwatch.model.user;
+package com.codecool.solarwatch.model.entity.user;
 
+import com.codecool.solarwatch.model.user.Role;
 import jakarta.persistence.*;
 
 import java.util.Set;
