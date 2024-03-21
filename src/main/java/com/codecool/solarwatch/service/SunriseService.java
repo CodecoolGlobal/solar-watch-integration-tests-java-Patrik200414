@@ -1,15 +1,13 @@
 package com.codecool.solarwatch.service;
 
-import com.codecool.solarwatch.custom_exception.NonExistingCityException;
-import com.codecool.solarwatch.custom_exception.NonExistingSunriseException;
-import com.codecool.solarwatch.custom_exception.UnableToSaveSunrise;
-import com.codecool.solarwatch.model.entities.city.City;
-import com.codecool.solarwatch.model.entities.sunrise.SunriseEntity;
-import com.codecool.solarwatch.model.open_weather.GeoCode;
-import com.codecool.solarwatch.model.sunrise.Sunrise;
-import com.codecool.solarwatch.model.sunrise.SunriseCreationDTO;
-import com.codecool.solarwatch.model.sunrise.SunriseReport;
-import com.codecool.solarwatch.model.sunrise.SunriseUpdateDTO;
+import com.codecool.solarwatch.customexception.NonExistingCityException;
+import com.codecool.solarwatch.customexception.NonExistingSunriseException;
+import com.codecool.solarwatch.model.entity.city.City;
+import com.codecool.solarwatch.model.entity.sunrise.SunriseEntity;
+import com.codecool.solarwatch.model.dto.sunrise.Sunrise;
+import com.codecool.solarwatch.model.dto.sunrise.SunriseCreationDTO;
+import com.codecool.solarwatch.model.dto.sunrise.SunriseReport;
+import com.codecool.solarwatch.model.dto.sunrise.SunriseUpdateDTO;
 import com.codecool.solarwatch.repository.CityRepository;
 import com.codecool.solarwatch.repository.SunriseRepository;
 import jakarta.transaction.Transactional;

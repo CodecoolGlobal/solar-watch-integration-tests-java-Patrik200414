@@ -1,11 +1,11 @@
 package com.codecool.solarwatch.service;
 
-import com.codecool.solarwatch.custom_exception.NonExistingCityException;
-import com.codecool.solarwatch.custom_exception.NonExistingSunsetException;
-import com.codecool.solarwatch.model.entities.city.City;
-import com.codecool.solarwatch.model.entities.sunset.SunsetEntity;
-import com.codecool.solarwatch.model.sunrise.Sunrise;
-import com.codecool.solarwatch.model.sunset.*;
+import com.codecool.solarwatch.customexception.NonExistingCityException;
+import com.codecool.solarwatch.customexception.NonExistingSunsetException;
+import com.codecool.solarwatch.model.dto.sunset.*;
+import com.codecool.solarwatch.model.entity.city.City;
+import com.codecool.solarwatch.model.entity.sunset.SunsetEntity;
+import com.codecool.solarwatch.model.dto.sunrise.Sunrise;
 import com.codecool.solarwatch.repository.CityRepository;
 import com.codecool.solarwatch.repository.SunsetRepository;
 import org.junit.jupiter.api.BeforeEach;

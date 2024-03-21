@@ -1,6 +1,6 @@
 package com.codecool.solarwatch.security;
 
-import com.codecool.solarwatch.model.entities.Role;
+import com.codecool.solarwatch.model.dto.user.Role;
 import com.codecool.solarwatch.security.jwt.AuthEntryPointJwt;
 import com.codecool.solarwatch.security.jwt.AuthTokenFilter;
 import com.codecool.solarwatch.security.jwt.JwtUtils;

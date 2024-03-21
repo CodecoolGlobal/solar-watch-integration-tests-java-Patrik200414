@@ -1,6 +1,6 @@
 package com.codecool.solarwatch.controller;
 
-import com.codecool.solarwatch.model.entities.city.City;
+import com.codecool.solarwatch.model.entity.city.City;
 import com.codecool.solarwatch.repository.CityRepository;
 import com.codecool.solarwatch.repository.SunriseRepository;
 import org.junit.jupiter.api.Test;
