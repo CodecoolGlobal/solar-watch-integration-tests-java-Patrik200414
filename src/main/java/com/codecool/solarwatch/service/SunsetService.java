@@ -4,7 +4,7 @@ import com.codecool.solarwatch.customexception.NonExistingCityException;
 import com.codecool.solarwatch.customexception.NonExistingSunsetException;
 import com.codecool.solarwatch.model.entity.city.City;
 import com.codecool.solarwatch.model.entity.sunset.SunsetEntity;
-import com.codecool.solarwatch.model.open_weather.GeoCode;
+import com.codecool.solarwatch.model.openweather.GeoCode;
 import com.codecool.solarwatch.model.sunset.Sunset;
 import com.codecool.solarwatch.model.sunset.SunsetCreationDTO;
 import com.codecool.solarwatch.model.sunset.SunsetReport;
