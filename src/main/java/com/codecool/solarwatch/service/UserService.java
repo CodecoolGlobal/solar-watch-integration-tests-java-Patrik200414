@@ -1,5 +1,6 @@
 package com.codecool.solarwatch.service;
 
+import com.codecool.solarwatch.customexception.NonExistingUserException;
 import com.codecool.solarwatch.model.dto.user.Role;
 import com.codecool.solarwatch.model.dto.user.UserAuthenticationDTO;
 import com.codecool.solarwatch.model.entity.user.UserEntity;
@@ -17,6 +18,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 
 @Service
@@ -44,14 +46,12 @@ public class UserService {
     }
 
     public JwtResponse login(UserAuthenticationDTO userAuthenticationDTO){
-        Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(
+        Authentication authentication = authenticateUser(
                 userAuthenticationDTO.userName(),
                 userAuthenticationDTO.password()
-        ));
+        );
 
-        SecurityContextHolder.getContext().setAuthentication(authentication);
         String jwt = jwtUtils.generateJwtToken(authentication);
-
         User userDetails = (User) authentication.getPrincipal();
         List<String> roles = userDetails
                 .getAuthorities()
@@ -62,5 +62,36 @@ public class UserService {
         return new JwtResponse(jwt, userDetails.getUsername(), roles);
     }
 
+    public JwtResponse addAdminRole(long id){
+        Optional<UserEntity> searchedUser = userRepository.findById(id);
+        if(searchedUser.isEmpty()){
+            throw new NonExistingUserException(id);
+        }
+
+        UserEntity user = searchedUser.get();
+        Set<Role> userRoles = user.getRoles();
+        userRoles.add(Role.ADMIN);
+
+        user.setRoles(userRoles);
+        UserEntity savedUser = userRepository.save(user);
+
+
+        String jwt = jwtUtils.generateJwtToken(savedUser);
+        List<String> roles = savedUser.getRoles().stream()
+                .map(Enum::name)
+                .toList();
+
+        return new JwtResponse(jwt, savedUser.getUserName(), roles);
+    }
+
+    private Authentication authenticateUser(String userName, String password){
+        Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(
+                userName,
+                password
+        ));
+
+        SecurityContextHolder.getContext().setAuthentication(authentication);
+        return authentication;
+    }
 
 }
