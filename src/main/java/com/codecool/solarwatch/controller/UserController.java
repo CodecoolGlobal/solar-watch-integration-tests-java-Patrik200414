@@ -44,13 +44,14 @@ public class UserController {
             }
     }
 
-    /*
-    @PutMapping("/role")
-    public ResponseEntity<?> addAdminRole(){
+
+    @PutMapping("/role/{id}")
+    public ResponseEntity<?> addAdminRole(@PathVariable long id){
         try{
-
+            JwtResponse jwtResponse = userService.addAdminRole(id);
+            return ResponseEntity.ok(jwtResponse);
         } catch (Exception e){
-
+            return ResponseEntity.badRequest().body(e.getMessage());
         }
-    }*/
+    }
 }
