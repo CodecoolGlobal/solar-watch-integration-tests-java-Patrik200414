@@ -1,5 +1,5 @@
 FROM eclipse-temurin:21-jre-alpine
 
 WORKDIR /tmp
-COPY target/*.jar app.jar
+COPY target/SolarWatchApplication-0.0.1-SNAPSHOT.jar app.jar
 ENTRYPOINT ["java","-jar","app.jar"]
