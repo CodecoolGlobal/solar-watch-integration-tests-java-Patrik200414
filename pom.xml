@@ -15,6 +15,7 @@
 	<description>Demo project for Spring Boot</description>
 	<properties>
 		<java.version>21</java.version>
+		<start-class>com.codecool.solarwatch.SolarWatchApplication</start-class>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -90,6 +91,21 @@
 			<plugin>
 				<artifactId>maven-failsafe-plugin</artifactId>
 			</plugin>
+				<plugin>
+					<groupId>org.springframework.boot</groupId>
+					<artifactId>spring-boot-maven-plugin</artifactId>
+					<configuration>
+						<mainClass>com.codecool.solarwatch.SolarWatchApplication</mainClass>
+						<layout>JAR</layout>
+					</configuration>
+					<executions>
+						<execution>
+							<goals>
+								<goal>repackage</goal>
+							</goals>
+						</execution>
+					</executions>
+				</plugin>
 		</plugins>
 	</build>
 
