@@ -45,23 +45,56 @@ Run `docker-compose up` command.
 ## API Endpoints
 Registration:
 
-- Endpoint: `http://localhost:8080/api/registration`
+- Endpoint: `POST` `http://localhost:8080/api/registration`
 - Request Body: {
                   "password": "password1",
                   "userName": "User1"
                 }
+- Response: Response status 201 (Created)
+- An exception can occure if you try to registrate twice with the same username
+  - Exception message: `User with username 'User1' already exists!`
 
 Sign-in:
 
-- Endpoint: `http://localhost:8080/api/signin`
+- Endpoint: `POST` `http://localhost:8080/api/signin`
 - Request Body: {
                   "password": "password1",
                   "userName": "User1"
                   }
 - Response: JWT token for further requests.
+  - `{
+        "jwt": "<JWT_TOKEN>",
+        "userName": "User1",
+        "roles": [
+            "USER"
+        ]
+    }`
+
+- An exception can occure if your credentials where wrong!
+  - 403(Forbidden status)
+  - Message: Bad credentials
 
 Get Sunrise Information:
 
-- Endpoint: `http://localhost:8080/api/sunrise?city=Los%20Angeles`
-- Authorization Header: Bearer {JWT token}
+- Endpoint: `GET` `http://localhost:8080/api/sunrise?city=<City name>&date=<Date>`
+- Authorization Header: Bearer <JWT_token>
 - Response: Sunrise time for the specified city on the given date.
+  - `{
+        "city": "Los Angeles",
+        "sunrise": "1:40:28 PM",
+        "date": "2024-03-30"
+    }`
+
+- Exceptions: InvalidCityParameterException, NonExistingSunriseException
+
+
+- Endpoint: `POST` `http://localhost:8080/api/sunrise`
+- Authorization Header: Bearer <JWT_token> (This endpoint oly accesible for ADMIN users)
+- Request body: `{
+                    "date": "2024-02-24",
+                    "sunrise": "4 PM",
+                    "cityId": 1
+                }`
+
+- Response: 201(Created status)
+- Exceptions: NonExistingCityException
