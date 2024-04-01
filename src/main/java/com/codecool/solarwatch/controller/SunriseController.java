@@ -37,7 +37,7 @@ public class SunriseController {
 
             return ResponseEntity.ok(sunriseReport);
         } catch (Exception e){
-            return ResponseEntity.badRequest().body(e);
+            return ResponseEntity.badRequest().body(e.getMessage());
         }
     }
 

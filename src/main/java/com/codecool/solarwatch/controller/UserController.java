@@ -27,10 +27,10 @@ public class UserController {
         try{
             userService.registrate(userRegistrationDTO);
             return ResponseEntity.status(HttpStatus.CREATED).build();
-        } catch (DataIntegrityViolationException e){
-            return ResponseEntity.badRequest().body(new Exception(String.format("User with username '%s' already exists!", userRegistrationDTO.userName())));
+            } catch (DataIntegrityViolationException e){
+            return ResponseEntity.badRequest().body(new RuntimeException(String.format("User with username '%s' already exists!", userRegistrationDTO.userName())).getMessage());
         } catch (Exception e){
-            return ResponseEntity.badRequest().body(e);
+            return ResponseEntity.badRequest().body(e.getMessage());
         }
     }
 
@@ -40,12 +40,12 @@ public class UserController {
                 JwtResponse jwtResponse = userService.login(userAuthenticationDTO);
                 return ResponseEntity.ok(jwtResponse);
             } catch (Exception e){
-                return ResponseEntity.status(HttpStatus.FORBIDDEN).body(e);
+                return ResponseEntity.status(HttpStatus.FORBIDDEN).body(e.getMessage());
             }
     }
 
 
-    @PutMapping("/role/{id}")
+    @PatchMapping("/role/{id}")
     public ResponseEntity<?> addAdminRole(@PathVariable long id){
         try{
             JwtResponse jwtResponse = userService.addAdminRole(id);
