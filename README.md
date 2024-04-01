@@ -99,8 +99,7 @@ Run `docker-compose up` command.
 - Response: 201(Created status)
 - Exceptions: NonExistingCityException
 
-|   |   |   |   |   |
-|---|---|---|---|---|
-|   |   |   |   |   |
+| # Functionality | # Endpoint | # Method | # Authorization | # Request body | # Response | # Exceptions |
+| Registration | `http://localhost:8080/api/registration` | `POST` | - | {"password": <Password>, "userName": <Username>} | Response status 201 (Created) | DataIntegrityViolationException |
 |   |   |   |   |   |
 |   |   |   |   |   |
