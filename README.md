@@ -43,49 +43,49 @@ Add the following environment variables:
 Run `docker-compose up` command.
 
 ## API Endpoints
-Registration:
+# Registration:
 
 - Endpoint: `POST` `http://localhost:8080/api/registration`
-- Request Body: {
-                  "password": "password1",
-                  "userName": "User1"
-                }
-- Response: Response status 201 (Created)
-- An exception can occure if you try to registrate twice with the same username
+  - Request Body: {
+                    "password": "password1",
+                    "userName": "User1"
+                  }
+  - Response: Response status 201 (Created)
+  - An exception can occure if you try to registrate twice with the same username
   - Exception message: `User with username 'User1' already exists!`
 
-Sign-in:
+# Sign-in:
 
 - Endpoint: `POST` `http://localhost:8080/api/signin`
-- Request Body: {
-                  "password": "password1",
-                  "userName": "User1"
-                  }
-- Response: JWT token for further requests.
-  - `{
-        "jwt": "<JWT_TOKEN>",
-        "userName": "User1",
-        "roles": [
-            "USER"
-        ]
-    }`
+  - Request Body: {
+                    "password": "password1",
+                    "userName": "User1"
+                    }
+  - Response: JWT token for further requests.
+    - `{
+          "jwt": "<JWT_TOKEN>",
+          "userName": "User1",
+          "roles": [
+              "USER"
+          ]
+      }`
 
-- An exception can occure if your credentials where wrong!
-  - 403(Forbidden status)
-  - Message: Bad credentials
+  - An exception can occure if your credentials where wrong!
+    - 403(Forbidden status)
+    - Message: Bad credentials
 
-Get Sunrise Information:
+# Get Sunrise Information:
 
 - Endpoint: `GET` `http://localhost:8080/api/sunrise?city=<City name>&date=<Date>`
-- Authorization Header: Bearer <JWT_token>
-- Response: Sunrise time for the specified city on the given date.
-  - `{
-        "city": "Los Angeles",
-        "sunrise": "1:40:28 PM",
-        "date": "2024-03-30"
-    }`
+  - Authorization Header: Bearer <JWT_token>
+  - Response: Sunrise time for the specified city on the given date.
+    - `{
+          "city": "Los Angeles",
+          "sunrise": "1:40:28 PM",
+          "date": "2024-03-30"
+      }`
 
-- Exceptions: InvalidCityParameterException, NonExistingSunriseException
+  - Exceptions: InvalidCityParameterException, NonExistingSunriseException
 
 
 - Endpoint: `POST` `http://localhost:8080/api/sunrise`
@@ -98,3 +98,9 @@ Get Sunrise Information:
 
 - Response: 201(Created status)
 - Exceptions: NonExistingCityException
+
+|   |   |   |   |   |
+|---|---|---|---|---|
+|   |   |   |   |   |
+|   |   |   |   |   |
+|   |   |   |   |   |
