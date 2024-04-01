@@ -39,7 +39,7 @@ public class UserService {
     public void registrate(UserAuthenticationDTO userAuthenticationDTO){
         UserEntity userEntity = new UserEntity(userAuthenticationDTO.userName(),
                 passwordEncoder.encode(userAuthenticationDTO.password()),
-                Set.of(Role.USER)
+                Set.of(Role.ROLE_USER)
         );
 
         userRepository.save(userEntity);
@@ -70,7 +70,7 @@ public class UserService {
 
         UserEntity user = searchedUser.get();
         Set<Role> userRoles = user.getRoles();
-        userRoles.add(Role.ADMIN);
+        userRoles.add(Role.ROLE_ADMIN);
 
         user.setRoles(userRoles);
         UserEntity savedUser = userRepository.save(user);

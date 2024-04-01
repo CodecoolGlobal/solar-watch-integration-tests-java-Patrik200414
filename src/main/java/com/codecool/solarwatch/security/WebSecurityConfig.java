@@ -45,9 +45,9 @@ public class WebSecurityConfig {
                         .requestMatchers("/api/user/signin").permitAll()
                         .requestMatchers(HttpMethod.GET, "/api/sunset").authenticated()
                         .requestMatchers("/error").permitAll()
-                        .requestMatchers(HttpMethod.DELETE, "/api/**").hasRole(Role.ADMIN.name())
-                        .requestMatchers(HttpMethod.PUT, "/api/**").hasRole(Role.ADMIN.name())
-                        .requestMatchers(HttpMethod.POST, "/api/**").hasRole(Role.ADMIN.name())
+                        .requestMatchers(HttpMethod.DELETE, "/api/**").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.PUT, "/api/**").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.POST, "/api/**").hasRole("ADMIN")
                         .anyRequest().authenticated()
                 );
 
