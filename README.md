@@ -15,91 +15,40 @@ Containerizing the project and configuring Spring Security presented notable cha
 
 ## Setup Instructions
 Manual Setup:
-Clone the repository.
+- Clone the repository.
 
-Add the following environment variables:
-`SPRING_JPA_HIBERNATE_DDL_AUTO`: [update, create-drop]
-`SPRING_DATASOURCE_URL`: [Your database URL]
-`SPRING_DATASOURCE_USERNAME`: [Your database username]
-`SPRING_DATASOURCE_PASSWORD`: [Your database password]
-`JWT_SECRET`: [Your JWT key]
-`JWT_EXPIRATION`: [JWT token expiration time in millisecond]
+- Add the following environment variables:
+  - `SPRING_JPA_HIBERNATE_DDL_AUTO`: [update, create-drop]
+  - `SPRING_DATASOURCE_URL`: [Your database URL]
+  - `SPRING_DATASOURCE_USERNAME`: [Your database username]
+  - `SPRING_DATASOURCE_PASSWORD`: [Your database password]
+  - `JWT_SECRET`: [Your JWT key]
+  - `JWT_EXPIRATION`: [JWT token expiration time in millisecond]
 
-To build project run `mvn clean package` command.
-To run project run `java -jar target/SolarWatchApplication-0.0.1-SNAPSHOT.jar`
+- To build project run `mvn clean package` command.
+- To run project run `java -jar target/SolarWatchApplication-0.0.1-SNAPSHOT.jar`
 
 
 Docker Setup:
-Clone the repository.
+- Clone the repository.
 
-Add the following environment variables:
-`DB_NAME`: [Your database name]
-`DB_USER`: [Your database username]
-`DB_PASSWORD`: [Your database password]
-`DDL_AUTO`: [update, create-drop]
-`JWT_EXPIRATION`: [JWT token expiration time in millisecond]
-`JWT_SECRET`: [Your JWT key]
+- Add the following environment variables:
+  - `DB_NAME`: [Your database name]
+  - `DB_USER`: [Your database username]
+  - `DB_PASSWORD`: [Your database password]
+  - `DDL_AUTO`: [update, create-drop]
+  - `JWT_EXPIRATION`: [JWT token expiration time in millisecond]
+  - `JWT_SECRET`: [Your JWT key]
 
-Run `docker-compose up` command.
+- Run `docker-compose up` command.
 
 ## API Endpoints
-# Registration:
 
-- Endpoint: `POST` `http://localhost:8080/api/registration`
-  - Request Body: {
-                    "password": "password1",
-                    "userName": "User1"
-                  }
-  - Response: Response status 201 (Created)
-  - An exception can occure if you try to registrate twice with the same username
-  - Exception message: `User with username 'User1' already exists!`
-
-# Sign-in:
-
-- Endpoint: `POST` `http://localhost:8080/api/signin`
-  - Request Body: {
-                    "password": "password1",
-                    "userName": "User1"
-                    }
-  - Response: JWT token for further requests.
-    - `{
-          "jwt": "<JWT_TOKEN>",
-          "userName": "User1",
-          "roles": [
-              "USER"
-          ]
-      }`
-
-  - An exception can occure if your credentials where wrong!
-    - 403(Forbidden status)
-    - Message: Bad credentials
-
-# Get Sunrise Information:
-
-- Endpoint: `GET` `http://localhost:8080/api/sunrise?city=<City name>&date=<Date>`
-  - Authorization Header: Bearer <JWT_token>
-  - Response: Sunrise time for the specified city on the given date.
-    - `{
-          "city": "Los Angeles",
-          "sunrise": "1:40:28 PM",
-          "date": "2024-03-30"
-      }`
-
-  - Exceptions: InvalidCityParameterException, NonExistingSunriseException
-
-
-- Endpoint: `POST` `http://localhost:8080/api/sunrise`
-- Authorization Header: Bearer <JWT_token> (This endpoint oly accesible for ADMIN users)
-- Request body: `{
-                    "date": "2024-02-24",
-                    "sunrise": "4 PM",
-                    "cityId": 1
-                }`
-
-- Response: 201(Created status)
-- Exceptions: NonExistingCityException
-
-| # Functionality | # Endpoint | # Method | # Authorization | # Request body | # Response | # Exceptions |
-| Registration | `http://localhost:8080/api/registration` | `POST` | - | {"password": <Password>, "userName": <Username>} | Response status 201 (Created) | DataIntegrityViolationException |
-|   |   |   |   |   |
-|   |   |   |   |   |
+| Functionality | Endpoint | Method | Authorization | Request body | Response | Exceptions |
+|---------------|----------|--------|---------------|--------------|----------|------------|
+| Registration | `/api/user/registration` | `POST` | - | {"password": <_PASSWORD_>, "userName": <USER_NAME>} | Response status 201 (Created) | DataIntegrityViolationException |
+| Sign-in | `/api/user/signin` | `POST` | - | {"password": <_PASSWORD_>, "userName": <USER_NAME>} | {"jwt":<JWT_TOKEN>, "userName": <USER_NAME>,"roles": [<USER_ROLES>]} | BadCredentialsException |
+| Add Admin Role | `/api/user/role/{id}`| `PATCH` | Bearer <JWT_token> | - | {"password": <_PASSWORD_>, "userName": <USER_NAME>} | {"jwt":<JWT_TOKEN>, "userName": <USER_NAME>,"roles": [<USER_ROLES>]} | NonExistingUserException |
+| Create City | `/api/city` | `POST` | Bearer <JWT_token> ADMIN role required | {"name": <CITY_NAME>, "lat": <CITY_LATTITUDE>,"lon": <CITY_LONGITUDE>, "state": <STATE_NAME>, "country": <COUNTRY_NAME>} | Response status 200 (OK) | AlreadyExistingCityException |
+| Update City | `/api/city/{id}` | `PUT` | Bearer <JWT_token> ADMIN role required | {"name": <CITY_NAME>, "lat": <CITY_LATTITUDE>,"lon": <CITY_LONGITUDE>, "state": <STATE_NAME>, "country": <COUNTRY_NAME>} | Response status 200 (OK) | NonExistingCityException |
+| Delete City | `/api/city/{id}` | `DELETE` | Bearer <JWT_token> ADMIN role required | - | Response status 200 (OK) | NonExistingCityException |
