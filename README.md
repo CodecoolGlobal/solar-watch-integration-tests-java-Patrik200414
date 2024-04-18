@@ -1,23 +1,65 @@
-### Solar Watch API
+<div align="center">
+  <h3 align="center">Solar Watch API</h3>
+</div>
+
+
+
+<details>
+  <summary>Table of Contents</summary>
+  <ol>
+    <li>
+      <a href="#about-the-project">About The Project</a>
+      <ul>
+        <li><a href="#built-with">Built With</a></li>
+      </ul>
+    </li>
+    <li>
+      <a href="#getting-started">Getting Started</a>
+      <ul>
+        <li><a href="#prerequisites">Prerequisites</a></li>
+        <li><a href="#run-project">Run Project</a></li>
+      </ul>
+    </li>
+    <li><a href="#api-endpoints">API Endpoints</a></li>
+  </ol>
+</details>
+
+
+
+## About The Project
+
 Solar Watch is an API that allows users to retrieve sunrise and sunset times for specific cities on given dates. Additionally, admin users can manage city information within the system.
 
-## Technologies Used
-- Spring Boot
-- Spring Data
-- Spring Security
-- PostgreSQL
-- Docker
-## Overview
-The project leverages Spring Boot along with Spring Data and Spring Security for seamless API development. PostgreSQL is utilized for storing user data, sunrise/sunset times, and city information. Docker is employed for containerizing the project, simplifying deployment and scalability.
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-## Challenges
-Containerizing the project and configuring Spring Security presented notable challenges. Despite complexities, all desired features were successfully implemented.
 
-## Setup Instructions
-Manual Setup:
-- Clone the repository.
 
-- Add the following environment variables:
+### Built With
+
+This section should list any major frameworks/libraries used to bootstrap your project. Leave any add-ons/plugins for the acknowledgements section. Here are a few examples.
+
+* [![Spring Boot][Spring Boot]][Spring-boot-url]
+* [![PostgreSQL][PostgreSQL]][PostgreSQL-url]
+* [![Docker][Docker]][Docker-url]
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+
+
+## Getting Started
+
+Clone the repository to your machine: https://github.com/CodecoolGlobal/solar-watch-integration-tests-java-Patrik200414
+
+I assume you have Maven and JRE with PostgreSQL or Docker downloaded to your machine.
+If not here are some links where you can download from :
+- Maven: https://maven.apache.org/download.cgi
+- JRE: https://www.java.com/en/download/manual.jsp
+- PostgreSQL: https://www.postgresql.org/download/
+- Docker: https://www.docker.com/products/docker-desktop/
+
+### Prerequisites
+
+For manual setup add the following environment variables:
   - `SPRING_JPA_HIBERNATE_DDL_AUTO`: [update, create-drop]
   - `SPRING_DATASOURCE_URL`: [Your database URL]
   - `SPRING_DATASOURCE_USERNAME`: [Your database username]
@@ -25,14 +67,7 @@ Manual Setup:
   - `JWT_SECRET`: [Your JWT key]
   - `JWT_EXPIRATION`: [JWT token expiration time in millisecond]
 
-- To build project run `mvn clean package` command.
-- To run project run `java -jar target/SolarWatchApplication-0.0.1-SNAPSHOT.jar`
-
-
-Docker Setup:
-- Clone the repository.
-
-- Add the following environment variables:
+For Docker setup add the following environment variables:
   - `DB_NAME`: [Your database name]
   - `DB_USER`: [Your database username]
   - `DB_PASSWORD`: [Your database password]
@@ -40,8 +75,21 @@ Docker Setup:
   - `JWT_EXPIRATION`: [JWT token expiration time in millisecond]
   - `JWT_SECRET`: [Your JWT key]
 
-- Run `docker-compose up` command.
 
+### Run Project
+
+- Manual setup:
+  1. Run `mvn clean package` command
+  2. To run project execute `java -jar target/SolarWatchApplication-0.0.1-SNAPSHOT.jar` command
+
+- Docker setup:
+  1. Run `docker-compose up` command
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+
+
+<!-- USAGE EXAMPLES -->
 ## API Endpoints
 
 | Functionality | Endpoint | Method | Authorization | Request body | Response | Exceptions |
@@ -60,3 +108,19 @@ Docker Setup:
 | Create Sunset | `/api/sunset` | `POST` | Bearer <JWT_token> ADMIN role required | {"date": <SUNSET_DATE>,"sunset": <SUNSET_TIME>,"cityId": <CITY_ID>}| Response status 201 (Created) | NonExistingSunsetException, NonExistingCityException |
 | Update Sunset| `/api/sunset/{id}` | `PUT` | Bearer <JWT_token> ADMIN role required | {"date": <SUNSET_DATE>,"sunset": <SUNSET_TIME>,"cityId": <CITY_ID>,"id": <SUNSET_ID>} | Response status 200 (OK) | NonExistingSunsetException, NonExistingCityException |
 | Delete Sunset | `/api/sunset/{id}` | `DELETE` | Bearer <JWT_token> ADMIN role required | - | Response status 200 (OK) | - |
+
+
+
+
+[contributors-shield]: https://img.shields.io/github/contributors/othneildrew/Best-README-Template.svg?style=for-the-badge
+[contributors-url]: https://github.com/CodecoolGlobal/solar-watch-integration-tests-java-Patrik200414/graphs/contributors
+
+
+[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
+[linkedin-url]: https://www.linkedin.com/in/patrik-martin2004/
+[Spring Boot]: https://img.shields.io/badge/Spring-Boot?style=flat&logo=spring&logoColor=%23FFFFFF
+[Spring-boot-url]: https://spring.io/
+[PostgreSQL]: https://img.shields.io/badge/Postgres-SQL?style=flat&logo=postgresql&logoColor=%23FFFFFF&color=%23008bb9
+[PostgreSQL-url]: https://www.postgresql.org/docs/
+[Docker]: https://img.shields.io/badge/Docker-a?style=flat&logo=docker&logoColor=%23FFFFFF&color=%23384d54
+[Docker-url]: https://docs.docker.com/
