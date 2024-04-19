@@ -118,7 +118,7 @@ For Docker setup add the following environment variables:
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://www.linkedin.com/in/patrik-martin2004/
 [email-shield]: https://img.shields.io/badge/Email-address?style=for-the-badge&logo=gmail&color=555
-[email-address]: martinbpatrik@gmail.com
+[email-address]: mailto:martinbpatrik@gmail.com
 [Spring Boot]: https://img.shields.io/badge/Spring-Boot?style=flat&logo=spring&logoColor=%23FFFFFF
 [Spring-boot-url]: https://spring.io/
 [Java]: https://img.shields.io/badge/Java-21?logo=openjdk&color=%23FF0000
