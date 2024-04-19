@@ -1,7 +1,6 @@
-<div align="center">
+<div align="center" name="readme-top">
   <h3 align="center">Solar Watch API</h3>
 </div>
-
 
 
 <details>
@@ -21,6 +20,7 @@
       </ul>
     </li>
     <li><a href="#api-endpoints">API Endpoints</a></li>
+    <li><a href="#contact">Contact</a></li>
   </ol>
 </details>
 
@@ -39,6 +39,7 @@ Solar Watch is an API that allows users to retrieve sunrise and sunset times for
 This section should list any major frameworks/libraries used to bootstrap your project. Leave any add-ons/plugins for the acknowledgements section. Here are a few examples.
 
 * [![Spring Boot][Spring Boot]][Spring-boot-url]
+* [![Java][Java]][Java-url]
 * [![PostgreSQL][PostgreSQL]][PostgreSQL-url]
 * [![Docker][Docker]][Docker-url]
 
@@ -89,7 +90,6 @@ For Docker setup add the following environment variables:
 
 
 
-<!-- USAGE EXAMPLES -->
 ## API Endpoints
 
 | Functionality | Endpoint | Method | Authorization | Request body | Response | Exceptions |
@@ -111,15 +111,18 @@ For Docker setup add the following environment variables:
 
 
 
-
-[contributors-shield]: https://img.shields.io/github/contributors/othneildrew/Best-README-Template.svg?style=for-the-badge
-[contributors-url]: https://github.com/CodecoolGlobal/solar-watch-integration-tests-java-Patrik200414/graphs/contributors
-
+### Contact
+[![LinkedIn][linkedin-shield]][linkedin-url]
+[![Email][email-shield]][email-address]
 
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://www.linkedin.com/in/patrik-martin2004/
+[email-shield]: https://img.shields.io/badge/Email-address?style=for-the-badge&logo=gmail&color=555
+[email-address]: martinbpatrik@gmail.com
 [Spring Boot]: https://img.shields.io/badge/Spring-Boot?style=flat&logo=spring&logoColor=%23FFFFFF
 [Spring-boot-url]: https://spring.io/
+[Java]: https://img.shields.io/badge/Java-21?logo=openjdk&color=%23FF0000
+[Java-url]: https://www.java.com/en/
 [PostgreSQL]: https://img.shields.io/badge/Postgres-SQL?style=flat&logo=postgresql&logoColor=%23FFFFFF&color=%23008bb9
 [PostgreSQL-url]: https://www.postgresql.org/docs/
 [Docker]: https://img.shields.io/badge/Docker-a?style=flat&logo=docker&logoColor=%23FFFFFF&color=%23384d54
